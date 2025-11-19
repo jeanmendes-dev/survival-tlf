@@ -32,11 +32,41 @@ A lightweight, reproducible R toolkit for generating **statistical outputs align
 
 > Simulated Phase III oncology trial (n=200). Log-Rank p = 0.021.
 
-### Cox Model Forest Plot
+### Cox Model Forest Plot — Adjusted Hazard Ratios
 
-![Gráficos de comparação entre grupos](comparacao_grupos.png)
+![Cox Forest Plot](img2.png)
 
-Boxplots, bar charts, and density plots facilitate intuitive interpretation of between-group differences..
+> Hazard Ratios for treatment, age, and gender. Reference categories: Treatment A, Female. Global p-value (Log-Rank) = 0.936. Concordance Index = 0.51.
+
+### Proportional Hazards Assumption Diagnostics
+
+The following plots assess the proportional hazards assumption using **scaled Schoenfeld residuals**. A non-random pattern or trend over time suggests violation of PH.
+
+#### Beta(t) for Treatment
+![Beta(t) for Treatment](img3.png)
+
+#### Beta(t) for Age
+![Beta(t) for Age](img4.png)
+
+#### Beta(t) for Gender
+![Beta(t) for Gender](img5.png)
+
+> No significant time-dependent trends observed — supports validity of the Cox PH model assumptions.
+
+### Predicted Survival Probabilities for a New Patient
+
+```text
+Call: survfit(formula = cox_model, newdata = new_patient)
+
+ time n.risk n.event survival std.err lower 95% CI upper 95% CI
+   30    200       0    1.000  0.0000     1.000        1.000
+   60    197       0    1.000  0.0000     1.000        1.000
+  120    197       0    1.000  0.0000     1.000        1.000
+  180    191       2    0.984  0.0094     0.966        1.000
+  300    186       1    0.962  0.0147     0.934        0.995
+  360    183       0    0.962  0.0147     0.934        0.992
+```
+> Predicted survival probability for a new patient (e.g., Treatment B, age 65, male) at 360 days: 96.2% (95% CI: 93.4% – 99.2%). 
 
 ---
 

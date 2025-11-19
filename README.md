@@ -28,7 +28,7 @@ A lightweight, reproducible R toolkit for generating **statistical outputs align
 
 ### Kaplan-Meier Curves (Treatment Comparison)
 
-![Tabela 1 gerada pelo clinical-compare](tabela1.png)
+![Figure 1 survival curves by treatment](img1.png)
 
 > Simulated Phase III oncology trial (n=200). Log-Rank p = 0.021.
 
